@@ -16,11 +16,12 @@
             :key='i'
             :is='el.type'
             v-bind='el.attrs'
+            @click='selectElement(el)'
           )
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Viewport',
@@ -43,6 +44,9 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      selectElement: 'selected/setElement'
+    })
   }
 }
 </script>
