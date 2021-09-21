@@ -92,6 +92,7 @@ export default {
   min-height: 100%;
   overflow: auto;
   svg {
+    transition: all ease-out 0.6s;
     border: 1px solid var(--background_200);
   }
 }
