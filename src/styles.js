@@ -1,7 +1,7 @@
 const styles = {
   themes: {
     dark: {
-      background_0: '#000000',
+      background_0: '#1A1A1A',
       background_100: '#1F1F1F',
       background_200: '#2C2C2C',
       background_300: '#393939',
