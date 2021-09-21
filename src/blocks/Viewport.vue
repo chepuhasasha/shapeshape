@@ -1,8 +1,8 @@
 <template lang='pug'>
-  Block(
-    block-title='Viewport'
-    :grid-area='gridArea'
-  )
+  Block(:grid-area='gridArea')
+    template(v-slot:header)
+      span Viewport
+      span {{ Math.round(scale * 100) + '%'}}
     template(v-slot:body)
       .viewport
         svg(version="1.1"
@@ -10,7 +10,6 @@
           v-if='composition'
           :width="composition.viewport.width"
           :height="composition.viewport.height"
-          :fill='composition.viewport.fill'
           xmlns="http://www.w3.org/2000/svg")
           component(
             v-for='(el, i) in composition.elements'
@@ -18,6 +17,11 @@
             :is='el.type'
             v-bind='el.attrs'
             @click='selectElement(el)'
+          )
+          component.selected(
+            v-if='element'
+            :is='element.type'
+            v-bind='element.attrs'
           )
 </template>
 
@@ -46,7 +50,8 @@ export default {
 
   computed: {
     ...mapState({
-      composition: state => state.selected.composition
+      composition: state => state.selected.composition,
+      element: state => state.selected.element
     }),
   },
 
@@ -76,7 +81,7 @@ export default {
 <style lang='scss'>
 .viewport {
   display: flex;
-  align-items: top;
+  align-items: center;
   justify-content: center;
   background: var(--background_0);
   width: 100%;
@@ -85,10 +90,15 @@ export default {
   max-height: 100%;
   min-width: 100%;
   min-height: 100%;
-  overflow: auto;
-  padding: 20px;
+  overflow: scroll;
+  // padding: 20px;
   svg {
     border: 1px solid var(--background_200);
   }
+}
+.selected {
+  stroke: var(--primary_0);
+  opacity: 0.5;
+  stroke-width: 2px;
 }
 </style>
