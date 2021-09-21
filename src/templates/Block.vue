@@ -52,8 +52,10 @@ export default {
   color: var(--text_primary);
   &_header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
-    padding: 10px;
+    padding: 10px 10px 0 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 300;

@@ -4,7 +4,7 @@
     :grid-area='gridArea'
   )
     template(v-slot:body)
-      .ROW
+      .viewport
 </template>
 
 <script>
@@ -30,6 +30,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang='scss'>
+.viewport {
+  background: var(--background_0);
+  width: 100%;
+  height: 100%;
+}
 </style>
