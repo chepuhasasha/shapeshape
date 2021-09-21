@@ -1,10 +1,15 @@
 <template lang='pug'>
   .editor
-    Themes(grid-area='1/1/2/2')
-    Project(grid-area='2/1/8/2')
-    Viewport(grid-area='1/2/8/8')
-    Settings(grid-area='1/8/11/9')
-    Timeline(grid-area='8/1/11/8')
+    transition(name='slide-fade' v-on:after-enter="afterEnter")
+      Themes(grid-area='1/1/2/2' v-if='chain.indexOf(1) != -1')
+    transition(name='slide-fade' v-on:after-enter="afterEnter")
+      Project(grid-area='2/1/8/2' v-if='chain.indexOf(2) != -1')
+    transition(name='slide-fade' v-on:after-enter="afterEnter")
+      Viewport(grid-area='1/2/8/8' v-if='chain.indexOf(3) != -1')
+    transition(name='slide-fade' v-on:after-enter="afterEnter")
+      Settings(grid-area='1/8/11/9' v-if='chain.indexOf(4) != -1')
+    transition(name='slide-fade' v-on:after-enter="afterEnter")
+      Timeline(grid-area='8/1/11/8' v-if='chain.indexOf(5) != -1')
 </template>
 
 <script>
@@ -12,6 +17,11 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
+  data: () => {
+    return {
+      chain: [1]
+    }
+  },
   components: {
     Themes: () => import('@/blocks/Themes.vue'),
     Timeline: () => import('@/blocks/Timeline.vue'),
@@ -23,6 +33,13 @@ export default {
     ...mapState({
       file: state => state.fileThree.file
     })
+  },
+
+  methods: {
+    afterEnter() {
+      const num = this.chain[this.chain.length - 1]
+      this.chain.push(num + 1)
+    }
   }
 }
 </script>
@@ -38,10 +55,10 @@ export default {
 }
 
 .slide-fade-enter-active {
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 .slide-fade-leave-active {
-  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all 0.3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active до версии 2.1.8 */ {
