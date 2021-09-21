@@ -43,12 +43,12 @@ export default {
   width: 100%;
 }
 *::-webkit-scrollbar {
-  background-color: var(--background_100);
-  height: 5px;
-  width: 5px;
+  background-color: var(--background_0);
+  height: 10px;
+  width: 10px;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: var(--background_0);
+  background-color: var(--background_200);
 }
 body {
   font-family: Inter;

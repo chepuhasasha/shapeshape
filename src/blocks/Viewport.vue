@@ -6,6 +6,7 @@
     template(v-slot:body)
       .viewport
         svg(version="1.1"
+          :style='{transform: `scale(${scale})`}'
           v-if='composition'
           :width="composition.viewport.width"
           :height="composition.viewport.height"
@@ -30,6 +31,12 @@ export default {
     Block: () => import('@/templates/Block.vue'),
   },
 
+  data: () => {
+    return {
+      scale: 1
+    }
+  },
+
   props: {
     gridArea: {
       type: String,
@@ -46,7 +53,22 @@ export default {
   methods: {
     ...mapActions({
       selectElement: 'selected/setElement'
-    })
+    }),
+
+    resize(e) {
+      this.scale += e.wheelDelta / 1000
+      if(this.scale <= 0.1) {
+        this.scale = 0.1
+      }
+    }
+  },
+
+  mounted() {
+    window.addEventListener('wheel', this.resize)
+  },
+
+  destroyed() {
+    window.removeEventListener('wheel', this.resize)
   }
 }
 </script>
@@ -54,10 +76,11 @@ export default {
 <style lang='scss'>
 .viewport {
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: center;
   background: var(--background_0);
   width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
   min-width: 100%;
