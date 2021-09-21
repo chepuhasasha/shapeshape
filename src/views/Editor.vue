@@ -2,7 +2,7 @@
   .editor
     Themes(grid-area='1/1/2/2')
     Project(grid-area='2/1/8/2')
-    Viewer(grid-area='1/2/8/8')
+    Viewport(grid-area='1/2/8/8')
     Settings(grid-area='1/8/11/9')
     Timeline(grid-area='8/1/11/8')
 </template>
@@ -15,7 +15,7 @@ export default {
   components: {
     Themes: () => import('@/blocks/Themes.vue'),
     Timeline: () => import('@/blocks/Timeline.vue'),
-    Viewer: () => import('@/blocks/Viewer.vue'),
+    Viewport: () => import('@/blocks/Viewport.vue'),
     Settings: () => import('@/blocks/Settings.vue'),
     Project: () => import('@/blocks/Project.vue'),
   },
