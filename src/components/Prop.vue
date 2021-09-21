@@ -1,5 +1,5 @@
 <template lang='pug'>
-  .COL.prop
+  .COL.prop(v-if='prop')
     span {{ prop.name }}
     .ROW
       input(

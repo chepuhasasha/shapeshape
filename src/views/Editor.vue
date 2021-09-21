@@ -1,7 +1,7 @@
 <template lang='pug'>
   .editor
     Themes(grid-area='1/1/2/2')
-    Tools(grid-area='2/1/8/2')
+    Project(grid-area='2/1/8/2')
     Viewer(grid-area='1/2/8/8')
     Settings(grid-area='1/8/11/9')
     Timeline(grid-area='8/1/11/8')
@@ -17,7 +17,7 @@ export default {
     Timeline: () => import('@/blocks/Timeline.vue'),
     Viewer: () => import('@/blocks/Viewer.vue'),
     Settings: () => import('@/blocks/Settings.vue'),
-    Tools: () => import('@/blocks/Tools.vue'),
+    Project: () => import('@/blocks/Project.vue'),
   },
   computed: {
     ...mapState({
