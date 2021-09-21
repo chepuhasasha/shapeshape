@@ -1,26 +1,35 @@
 <template lang='pug'>
   Block(
-    block-title='Repository'
+    block-title='Timeline'
     :grid-area='gridArea'
   )
     template(v-slot:body)
-      span test
+      .ROW
 </template>
 
 <script>
 export default {
-  name: 'Card',
+  name: 'Timeline',
+
+  components: {
+    Block: () => import('@/templates/Block.vue'),
+  },
+
   props: {
     gridArea: {
       type: String,
       default: null
-    }
+    },
   },
-  components: {
-    Block: () => import('@/templates/Block.vue')
+
+  computed: {
+  },
+
+  methods: {
   }
 }
 </script>
 
-<style lang='scss'>
+<style>
+
 </style>

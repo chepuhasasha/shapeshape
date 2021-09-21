@@ -18,7 +18,7 @@ import { mapState, mapActions } from 'vuex'
 import styles from '@/styles'
 
 export default {
-  name: 'Connector',
+  name: 'Themes',
 
   components: {
     Block: () => import('@/templates/Block.vue'),

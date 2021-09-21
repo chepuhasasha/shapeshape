@@ -47,21 +47,24 @@ export default {
 .block {
   background: var(--background_100);
   border-radius: 0px;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   color: var(--text_primary);
   &_header {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 300;
+    letter-spacing: 1px;
     font-size: 13px;
     line-height: 13px;
     color: var(--text_primary);
-    margin-bottom: 10px;
   }
 
   &_body {
+    padding: 10px;
     display: flex;
     flex-direction: column;
     width: 100%;
