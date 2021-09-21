@@ -32,6 +32,11 @@ export default {
   display: flex;
   gap: 10px;
 }
+.COL {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 #app {
   height: 100%;
@@ -60,5 +65,26 @@ body {
     outline: none;
     box-sizing: border-box;
   }
+}
+
+input {
+  background: var(--background_100);
+  padding: 10px;
+  color: var(--text_primary_0);
+  height: 30px;
+  width: 100%;
+  &:focus {
+    background: var(--background_200);
+  }
+  &[type="color"] {
+    padding: 2px;
+    min-width: 30px;
+    max-width: 30px;
+  }
+}
+
+span {
+  font-size: 12px;
+  font-weight: 500;
 }
 </style>

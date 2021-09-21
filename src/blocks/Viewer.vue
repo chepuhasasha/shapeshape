@@ -4,10 +4,12 @@
     :grid-area='gridArea'
   )
     template(v-slot:body)
-      .viewport
+      .viewport {{ element }}
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Viewer',
 
@@ -23,6 +25,9 @@ export default {
   },
 
   computed: {
+    ...mapState({
+      element: state => state.selected.element
+    }),
   },
 
   methods: {
