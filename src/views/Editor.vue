@@ -55,14 +55,14 @@ export default {
 }
 
 .slide-fade-enter-active {
-  transition: all 0.3s ease;
+  transition: all 0.1s ease-in;
 }
 .slide-fade-leave-active {
   transition: all 0.3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active до версии 2.1.8 */ {
-  transform: translateX(10px);
+  transform: translateX(100px);
   opacity: 0;
 }
 </style>
