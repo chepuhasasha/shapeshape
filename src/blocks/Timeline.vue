@@ -7,17 +7,20 @@
         Button(icon='eye')
         Button(icon='eye')
     template(v-slot:body)
-      .timeline(
-        v-for='(el, i) in getElements'
-        :class='{[$style.active]: el === element}'
-      )
-        .timeline_titlebar(
-          :style='{width: titlebar.width + "px"}'
-          @click='selectElement(el)'
-        ) 
-          span.timeline_titlebar_type {{ el.type }}
-          span.timeline_titlebar_name {{ el.name }}
-        .timeline_line
+      transition-group(name='slide-fade')
+        .timeline(
+          ref='line'
+          v-for='(el, i) in getElements'
+          :key='el'
+          :class='{[$style.active]: el === element}'
+        )
+          .timeline_titlebar(
+            :style='{width: titlebar.width + "px"}'
+            @click='selectElement(el)'
+          ) 
+            span.timeline_titlebar_type {{ el.type }}
+            span.timeline_titlebar_name {{ el.name }}
+          .timeline_line
 </template>
 
 <script>
