@@ -90,8 +90,7 @@ export default {
   max-height: 100%;
   min-width: 100%;
   min-height: 100%;
-  overflow: scroll;
-  // padding: 20px;
+  overflow: auto;
   svg {
     border: 1px solid var(--background_200);
   }

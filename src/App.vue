@@ -50,6 +50,9 @@ export default {
 *::-webkit-scrollbar-thumb {
   background-color: var(--background_200);
 }
+*::-webkit-scrollbar-corner {
+  background: none;
+}
 body {
   font-family: Inter;
   box-sizing: border-box;
