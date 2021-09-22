@@ -5,24 +5,25 @@
       span {{ Math.round(scale * 100) + '%'}}
     template(v-slot:body)
       .viewport
-        svg(version="1.1"
-          :style='{transform: `scale(${scale})`}'
-          v-if='composition'
-          :width="composition.viewport.width"
-          :height="composition.viewport.height"
-          xmlns="http://www.w3.org/2000/svg")
-          component(
-            v-for='(el, i) in composition.elements'
-            :key='i'
-            :is='el.type'
-            v-bind='el.attrs'
-            @click='selectElement(el)'
-          )
-          component.selected(
-            v-if='element'
-            :is='element.type'
-            v-bind='element.attrs'
-          )
+        .wrapper(:style='getWrap')
+          svg(version="1.1"
+            :style='{transform: `scale(${scale})`}'
+            v-if='composition'
+            :width="composition.viewport.width"
+            :height="composition.viewport.height"
+            xmlns="http://www.w3.org/2000/svg")
+            component(
+              v-for='(el, i) in composition.elements'
+              :key='i'
+              :is='el.type'
+              v-bind='el.attrs'
+              @click='selectElement(el)'
+            )
+            component.selected(
+              v-if='element'
+              :is='element.type'
+              v-bind='element.attrs'
+            )
 </template>
 
 <script>
@@ -53,6 +54,13 @@ export default {
       composition: state => state.selected.composition,
       element: state => state.selected.element
     }),
+
+    getWrap() {
+      return this.composition ? {
+        width: `${this.composition.viewport.width * this.scale}px`,
+        height: `${this.composition.viewport.height * this.scale}px`
+      } : {}
+    }
   },
 
   methods: {
@@ -80,9 +88,6 @@ export default {
 
 <style lang='scss'>
 .viewport {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: var(--background_0);
   width: 100%;
   height: 100%;
@@ -91,8 +96,15 @@ export default {
   min-width: 100%;
   min-height: 100%;
   overflow: auto;
+  padding: 20px;
+  .wrapper {
+    margin: auto auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   svg {
-    transition: all ease-out 0.6s;
+    transition: all ease-out 0.3s;
     border: 1px solid var(--background_200);
   }
 }
