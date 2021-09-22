@@ -11,7 +11,7 @@
         .timeline(
           ref='line'
           v-for='(el, i) in getElements'
-          :key='el'
+          :key='i'
           :class='{[$style.active]: el === element}'
         )
           .timeline_titlebar(
