@@ -1,0 +1,30 @@
+{
+  "name": "shapeshape",
+  "version": "1.0.0",
+  "description": "svg cli",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashachepuha/shapeshape.git"
+  },
+  "keywords": [
+    "svg"
+  ],
+  "author": "Sergey Batukov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sashachepuha/shapeshape/issues"
+  },
+  "homepage": "https://github.com/sashachepuha/shapeshape#readme",
+  "devDependencies": {
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
