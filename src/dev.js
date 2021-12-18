@@ -1,14 +1,8 @@
 import ShapeShape from './index';
 
 const element = document.createElement('div');
+document.body.appendChild(element);
+
 const SS = new ShapeShape(element)
-console.log(SS.getContainer())
-
-// function component() {
-
-//   element.innerHTML = test.test
-
-//   return element;
-// }
-
-// document.body.appendChild(component());
+const circle = SS.circle({fill: 'red'})
+console.log(circle)
