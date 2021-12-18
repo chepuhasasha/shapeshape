@@ -2,9 +2,11 @@
   "name": "shapeshape",
   "version": "1.0.0",
   "description": "svg cli",
-  "private": true,
+  "main": "lib/index.js",
+  "private": false,
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --env production --progress",
+    "dev": "webpack serve --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,8 +23,10 @@
   },
   "homepage": "https://github.com/sashachepuha/shapeshape#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
     "lodash": "^4.17.21"
