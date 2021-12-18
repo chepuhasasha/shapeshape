@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/sashachepuha/shapeshape/issues"
   },
-  "homepage": "https://github.com/sashachepuha/shapeshape#readme",
+  "homepage": "https://github.com/sashachepuha/shapeshape",
   "devDependencies": {
     "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.65.0",
