@@ -1,9 +1,9 @@
- function component() {
-   const element = document.createElement('div');
+export default class ShapeShape {
+  constructor(el) {
+    this.container = el;
+  }
 
-   element.innerHTML = 'TEST'
-
-   return element;
- }
-
- document.body.appendChild(component());
+  getContainer() {
+    return this.container;
+  }
+}
