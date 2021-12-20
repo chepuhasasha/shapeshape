@@ -23,8 +23,12 @@ const circle2 = SS.circle({
   fill: 'blue'
 })
 
+
 svg.add(circle)
 svg.add(circle2)
+
+circle2.fill = 'blue'
+console.log(circle2)
 
 // svg.draw()
 // svg.update()

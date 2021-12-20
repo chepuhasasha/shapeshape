@@ -1,7 +1,6 @@
 export default class ShapeShape {
   constructor(el) {
     this.container = el;
-    this.elements = [];
     this.svgns = "http://www.w3.org/2000/svg"
   }
 
@@ -16,6 +15,7 @@ export default class ShapeShape {
 
 class SVG {
   constructor(props) {
+    this.elements = [];
     this.svgns = "http://www.w3.org/2000/svg"
     this.svg = document.createElementNS(this.svgns,'svg');
     this.svg.setAttributeNS(null, "width", props.width);
@@ -25,17 +25,19 @@ class SVG {
   }
 
   add(el) {
-    this.svg.appendChild(el)
+    this.elements.push(el.element)
+    this.svg.appendChild(el.element)
   }
 }
 
 class Element {
   constructor(name, props) {
+    this.fill = 'red',
     this.svgns = "http://www.w3.org/2000/svg"
     this.element = document.createElementNS(this.svgns, name)
     Object.keys(props).forEach(key => {
       this.element.setAttributeNS(null, key, props[key]);
     })
-    return this.element
+    return this
   }
 }
