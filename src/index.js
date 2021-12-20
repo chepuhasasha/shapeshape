@@ -1,9 +1,5 @@
 class SVG {
   constructor(el) {
-    this.init(el)
-  }
-
-  init(el) {
     this._svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
     this._parent = el
     this._parent.appendChild(this._svg);
@@ -16,6 +12,24 @@ class SVG {
       }
     })
   }
+
+  add(el) {
+    console.log(el)
+    this._svg.appendChild(el._element);
+  }
+}
+class Circle {
+  constructor() {
+    this._element = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  }
+
+  update() {
+    Object.keys(this).forEach(key => {
+      if (!key.includes('_')) {
+        this._element.setAttributeNS(null, key, this[key]);
+      }
+    })
+  }
 }
 
 export default {
@@ -23,14 +37,31 @@ export default {
     const svg = new SVG(el)
     return new Proxy(svg, {
       get: function(item, property){
-        console.log(`Получение свойства: '${property}'`);
+        console.log(`get: '${property}: ${item[property]}'`);
         svg.update();
         return item[property];
       },
       set: function(item, property, val){
-        console.log(`Установка свойства: '${property}'`);
+        console.log(`set: '${property}: ${val}'`);
         item[property] = val
         svg.update();
+        return item[property];
+      }
+    });
+  },
+
+  circle() {
+    const circle = new Circle()
+    return new Proxy(circle, {
+      get: function(item, property){
+        console.log(`get: '${property}: ${item[property]}'`);
+        circle.update();
+        return item[property];
+      },
+      set: function(item, property, val){
+        console.log(`set: '${property}: ${val}'`);
+        item[property] = val
+        circle.update();
         return item[property];
       }
     });
