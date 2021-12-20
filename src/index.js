@@ -44,6 +44,20 @@ class Element {
   }
 }
 
+const proxying = function(target) {
+  return new Proxy(target, {
+    get: function(item, property){
+      target.update();
+      return item[property];
+    },
+    set: function(item, property, val){
+      item[property] = val
+      target.update();
+      return item[property];
+    }
+  });
+}
+
 export default {
   SVG(el, props = {}) {
     const svg = new SVG(el, props)
@@ -53,21 +67,10 @@ export default {
   circle(props = {}) {
     const circle = new Element('circle', props)
     return proxying(circle)
-  }
-}
+  },
 
-const proxying = function(target) {
-  return new Proxy(target, {
-    get: function(item, property){
-      console.log(`get: '${property}: ${item[property]}'`);
-      target.update();
-      return item[property];
-    },
-    set: function(item, property, val){
-      console.log(`set: '${property}: ${val}'`);
-      item[property] = val
-      target.update();
-      return item[property];
-    }
-  });
+  rect(props = {}) {
+    const rect = new Element('rect', props)
+    return proxying(rect)
+  }
 }
