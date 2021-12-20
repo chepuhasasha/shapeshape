@@ -9,8 +9,8 @@ export default class ShapeShape {
     return new SVG(props);
   }
 
-  static circle() {
-    return new Element('circle')
+  static circle(props) {
+    return new Element('circle', props)
   }
 }
 
@@ -30,13 +30,12 @@ class SVG {
 }
 
 class Element {
-  constructor(name) {
+  constructor(name, props) {
     this.svgns = "http://www.w3.org/2000/svg"
     this.element = document.createElementNS(this.svgns, name)
-    this.element.setAttributeNS(null, "cx", 25);
-    this.element.setAttributeNS(null, "cy", 25);
-    this.element.setAttributeNS(null, "r",  20);
-    this.element.setAttributeNS(null, "fill", "green"); 
+    Object.keys(props).forEach(key => {
+      this.element.setAttributeNS(null, key, props[key]);
+    })
     return this.element
   }
 }
