@@ -42,6 +42,14 @@ class Element {
       }
     })
   }
+
+  rotate(val) {
+    this._element.setAttributeNS(null, 'transform', `rotate(${val})`);
+  }
+
+  move(x, y) {
+    this._element.setAttributeNS(null, 'transform', `translate(${x},${y})`);
+  }
 }
 
 const proxying = function(target) {

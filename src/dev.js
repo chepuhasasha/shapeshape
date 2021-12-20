@@ -23,12 +23,17 @@ const c2 = SS.circle({
   cy: 30,
   fill: 'blue'
 })
+c2.move(44, 99)
+
 const r = SS.rect()
 r.x = 30
 r.y = 40
 r.width = 50
 r.height = 30
 r.fill = 'green'
+
+r.rotate(10)
+r.move(30, 30)
 
 svg.add([c, c2])
 svg.add(r)
