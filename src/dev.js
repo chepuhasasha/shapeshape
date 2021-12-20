@@ -20,15 +20,14 @@ const c = SS.circle({
 const c2 = SS.circle({
   r: 10,
   cx: 40,
-  cy: 20,
+  cy: 30,
   fill: 'blue'
 })
-const c3 = SS.circle({
-  r: 10,
-  cx: 60,
-  cy: 20,
-  fill: 'green'
-})
+const c3 = SS.circle()
+c3.r = 10
+c3.cx = 60
+c3.cy = 40
+c3.fill = 'green'
 
 svg.add([c, c2])
 svg.add(c3)
