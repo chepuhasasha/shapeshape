@@ -2,38 +2,41 @@ export default class ShapeShape {
   constructor(el) {
     this.container = el;
     this.elements = [];
+    this.svgns = "http://www.w3.org/2000/svg"
   }
 
-  static init(props) {
-    // const element = document.createElement('svg');
-    // element.id = props.id
-    // // element.setAttribute('width', props.width + 'px')
-    // // element.setAttribute('height', props.height + 'px')
-    // element.style.width = props.width + 'px'
-    // element.style.height = props.height + 'px'
-    // element.innerHTML = 'test'
-    // props.container.appendChild(element);
-    
-    const svgns = "http://www.w3.org/2000/svg";
-    const svg = document.createElementNS(svgns,'svg');
-    var shape = document.createElementNS(svgns, "circle");
-    shape.setAttributeNS(null, "cx", 25);
-    shape.setAttributeNS(null, "cy", 25);
-    shape.setAttributeNS(null, "r",  20);
-    shape.setAttributeNS(null, "fill", "green"); 
-    svg.appendChild(shape);
-    props.container.appendChild(svg);
+  static SVG(props) {
+    return new SVG(props);
   }
 
-  static rect() {
-    return new Element();
+  static circle() {
+    return new Element('circle')
+  }
+}
+
+class SVG {
+  constructor(props) {
+    this.svgns = "http://www.w3.org/2000/svg"
+    this.svg = document.createElementNS(this.svgns,'svg');
+    this.svg.setAttributeNS(null, "width", props.width);
+    this.svg.setAttributeNS(null, "height", props.height);
+    this.container = props.container
+    this.container.appendChild(this.svg);
+  }
+
+  add(el) {
+    this.svg.appendChild(el)
   }
 }
 
 class Element {
-  constructor() {
-    this.a = 23;
+  constructor(name) {
+    this.svgns = "http://www.w3.org/2000/svg"
+    this.element = document.createElementNS(this.svgns, name)
+    this.element.setAttributeNS(null, "cx", 25);
+    this.element.setAttributeNS(null, "cy", 25);
+    this.element.setAttributeNS(null, "r",  20);
+    this.element.setAttributeNS(null, "fill", "green"); 
+    return this.element
   }
 }
-
-
