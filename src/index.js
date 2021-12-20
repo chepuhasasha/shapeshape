@@ -17,8 +17,13 @@ class SVG {
   }
 
   add(el) {
-    console.log(el)
-    this._svg.appendChild(el._element);
+    if(Array.isArray(el)) {
+      el.forEach(item => {
+        this._svg.appendChild(item._element);
+      })
+    } else {
+      this._svg.appendChild(el._element);
+    }
   }
 }
 

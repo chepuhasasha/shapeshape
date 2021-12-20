@@ -23,6 +23,12 @@ const c2 = SS.circle({
   cy: 20,
   fill: 'blue'
 })
+const c3 = SS.circle({
+  r: 10,
+  cx: 60,
+  cy: 20,
+  fill: 'green'
+})
 
-svg.add(c)
-svg.add(c2)
+svg.add([c, c2])
+svg.add(c3)
