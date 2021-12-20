@@ -1,7 +1,8 @@
-import ShapeShape from './index';
+import SS from './index';
 
 const element = document.createElement('div');
 document.body.appendChild(element);
 
-const SS = new ShapeShape(element)
-console.log(SS)
+const svg = SS.SVG(element)
+svg.a = 'red'
+console.log(svg.a)
