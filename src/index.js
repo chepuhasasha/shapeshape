@@ -31,6 +31,7 @@ class Element {
   constructor(name, props = {}) {
     this._element = document.createElementNS('http://www.w3.org/2000/svg', name);
     Object.keys(props).forEach(key => {
+      this[key] = props[key]
       this._element.setAttributeNS(null, key, props[key]);
     })
   }
@@ -42,6 +43,10 @@ class Element {
       }
     })
   }
+
+  // emit(name, foo) {
+  //   this._element.addEventListener(name, foo(this))
+  // }
 
   rotate(val) {
     this._element.setAttributeNS(null, 'transform', `rotate(${val})`);

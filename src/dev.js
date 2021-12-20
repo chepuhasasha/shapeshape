@@ -14,8 +14,15 @@ const c = SS.circle({
   r: 10,
   cx: 20,
   cy: 20,
-  fill: 'red'
+  fill: 'red',
+  'stroke-width': 5,
+  stroke: 'blue'
 })
+
+// c.emit('mousemove', (el) => {
+//   el.stroke = 'green'
+//   el.
+// })
 
 const r = SS.rect({
   x: 30,
