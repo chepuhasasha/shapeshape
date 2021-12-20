@@ -1,8 +1,11 @@
 class SVG {
-  constructor(el) {
+  constructor(el, props = {}) {
     this._svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
     this._parent = el
     this._parent.appendChild(this._svg);
+    Object.keys(props).forEach(key => {
+      this._svg.setAttributeNS(null, key, props[key]);
+    })
   }
 
   update() {
@@ -18,9 +21,13 @@ class SVG {
     this._svg.appendChild(el._element);
   }
 }
+
 class Circle {
-  constructor() {
+  constructor(props = {}) {
     this._element = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    Object.keys(props).forEach(key => {
+      this._element.setAttributeNS(null, key, props[key]);
+    })
   }
 
   update() {
@@ -33,8 +40,8 @@ class Circle {
 }
 
 export default {
-  SVG(el) {
-    const svg = new SVG(el)
+  SVG(el, props = {}) {
+    const svg = new SVG(el, props)
     return new Proxy(svg, {
       get: function(item, property){
         console.log(`get: '${property}: ${item[property]}'`);
@@ -50,8 +57,8 @@ export default {
     });
   },
 
-  circle() {
-    const circle = new Circle()
+  circle(props = {}) {
+    const circle = new Circle(props)
     return new Proxy(circle, {
       get: function(item, property){
         console.log(`get: '${property}: ${item[property]}'`);
