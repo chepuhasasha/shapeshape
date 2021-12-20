@@ -1,3 +1,7 @@
+import { Element } from './element';
+// import test from './element';
+
+
 export default class ShapeShape {
   constructor(el) {
     this.container = el;
@@ -9,6 +13,7 @@ export default class ShapeShape {
     const circle = document.createElement('circle');
     return circle
   }
+
   // add(text) {
   //   this.elements.push(text)
   //   this.container.innerHTML = this.elements;

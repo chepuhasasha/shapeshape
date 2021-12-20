@@ -6,6 +6,9 @@ module.exports = (env) => {
     mode: 'development',
     entry: './src/dev.js',
     devtool: 'inline-source-map',
+    devServer: {
+      allowedHosts: 'all'
+    },
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Development',
