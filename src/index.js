@@ -1,6 +1,5 @@
 class SVG {
   constructor(el) {
-    this.a = 'test'
     this.init(el)
   }
 
@@ -9,22 +8,29 @@ class SVG {
     this._parent = el
     this._parent.appendChild(this._svg);
   }
+
+  update() {
+    Object.keys(this).forEach(key => {
+      if (!key.includes('_')) {
+        this._svg.setAttributeNS(null, key, this[key]);
+      }
+    })
+  }
 }
 
-export default class ShapeShape {
-  constructor() {
-  }
-
-  static SVG(el) {
+export default {
+  SVG(el) {
     const svg = new SVG(el)
     return new Proxy(svg, {
       get: function(item, property){
         console.log(`Получение свойства: '${property}'`);
+        svg.update();
         return item[property];
       },
       set: function(item, property, val){
         console.log(`Установка свойства: '${property}'`);
         item[property] = val
+        svg.update();
         return item[property];
       }
     });
