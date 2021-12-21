@@ -44,10 +44,6 @@ class Element {
     })
   }
 
-  // emit(name, foo) {
-  //   this._element.addEventListener(name, foo(this))
-  // }
-
   rotate(val) {
     this._element.setAttributeNS(null, 'transform', `rotate(${val})`);
   }

@@ -19,10 +19,14 @@ const c = SS.circle({
   stroke: 'blue'
 })
 
-// c.emit('mousemove', (el) => {
-//   el.stroke = 'green'
-//   el.
-// })
+c._element.addEventListener('mousemove', () => {
+  // c.r = 30
+  c.stroke = 'lightblue'
+})
+c._element.addEventListener('mouseleave', () => {
+  // c.r = 10
+  c.stroke = 'blue'
+})
 
 const r = SS.rect({
   x: 30,
