@@ -53,6 +53,30 @@ class Element {
   }
 }
 
+class Path {
+  constructor(pointsArr=[],props = {}) {
+    this._element = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    Object.keys(props).forEach(key => {
+      this[key] = props[key]
+      this._element.setAttributeNS(null, key, props[key]);
+    })
+    this.points(pointsArr)
+  }
+
+  points(arr) {
+    const d = 'M10 10 H 90 V 90 H 10'
+    this._element.setAttributeNS(null, 'd', d);
+  }
+
+  update() {
+    Object.keys(this).forEach(key => {
+      if (!key.includes('_')) {
+        this._element.setAttributeNS(null, key, this[key]);
+      }
+    })
+  }
+}
+
 const proxying = function(target) {
   return new Proxy(target, {
     get: function(item, property){
@@ -81,5 +105,10 @@ export default {
   rect(props = {}) {
     const rect = new Element('rect', props)
     return proxying(rect)
+  },
+
+  path(points=[],props = {}) {
+    const path = new Path(points, props)
+    return proxying(path)
   }
 }

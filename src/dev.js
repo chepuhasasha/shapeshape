@@ -35,9 +35,14 @@ const r = SS.rect({
   height: 30,
   fill:'green'
 })
+const p = SS.path([],{
+  'stroke-width': 1,
+  stroke: 'black',
+  fill: 'none'
+})
 
 r.rotate(10)
 r.move(30, 30)
 c.move(44, 99)
 
-svg.add([c, r])
+svg.add([c, r, p])
