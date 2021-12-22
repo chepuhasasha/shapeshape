@@ -11,8 +11,8 @@ const c2 = SS.circle({ cx: 100, cy: 100, r: 50, fill: 'green' })
 r.fill = 'blue'
 c.fill = 'red'
 
-const down = function() {
-  this.selected = true
+const toggle = function() {
+  this.selected = !this.selected
 }
 const move = function(e) {
   if(this.selected) {
@@ -20,13 +20,10 @@ const move = function(e) {
     this.y = e.pageY - this.height / 2
   }
 }
-const up = function() {
-  this.selected = false
-}
 
-r.listen('mousedown', down)
+r.listen('mousedown', toggle)
 r.listen('mousemove', move)
-r.listen('mouseup', up)
+r.listen('mouseup', toggle)
 
 svg.add([r, c, c2])
 svg.delete(c2)
