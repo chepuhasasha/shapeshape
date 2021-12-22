@@ -17,14 +17,16 @@ const r = SS.rect({
   fill: 'red'
 })
 
-const r2 = SS.rect({
-  x: 50,
-  y: 50,
-  width: 200,
-  height: 100,
+const c = SS.circle({
+  cx: 200,
+  cy: 100,
+  r: 50,
   fill: 'blue'
 })
 
-svg.addChild([r, r2])
+r.fill = 'blue'
+c.fill = 'red'
+
+svg.add([r, c])
 
 console.log(svg)

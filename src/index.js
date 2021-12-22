@@ -4,8 +4,9 @@ function PROXY(target) {
       return target[prop];
     },
     set(target, prop, val) {
-      target[prop] = val;
-      return target[prop];
+      target.attrs[prop] = val;
+      target.update(target.attrs)
+      return target.attrs[prop];
     }
   })
 }
@@ -18,26 +19,26 @@ class Element {
     this.childs = [];
     this.createElement(name);
     this.update(this.attrs);
-    this.add(this.element, container);
+    this.addEl(this.element, container);
   }
 
   createElement(name) {
     this.element = document.createElementNS('http://www.w3.org/2000/svg',name);
   }
 
-  addChild(el) {
+  add(el) {
     if (Array.isArray(el)) {
       el.forEach(item => {
         this.childs.push(item);
-        this.add(item.element, this.element)
+        this.addEl(item.element, this.element)
       })
       return
     }
     this.childs.push(el);
-    this.add(el.element, this.element)
+    this.addEl(el.element, this.element)
   }
 
-  add(el, container) {
+  addEl(el, container) {
     if (container) {
       container.appendChild(el);
     }
@@ -64,5 +65,8 @@ export default {
   },
   rect(attrs = {}) {
     return PROXY(new Element('rect', attrs));
+  },
+  circle(attrs = {}) {
+    return PROXY(new Element('circle', attrs));
   }
 }
