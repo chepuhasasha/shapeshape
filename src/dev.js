@@ -13,3 +13,6 @@ c.fill = 'red'
 
 svg.add([r, c, c2])
 svg.delete(c2)
+
+/* <polygon points="100,100 150,25 150,75 200,0"
+fill="none" stroke="black" /> */
