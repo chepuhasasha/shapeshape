@@ -36,5 +36,3 @@ c.fill = 'red'
 
 svg.add([r, c, c2])
 svg.delete(c2)
-
-console.log(svg)

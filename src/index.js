@@ -35,6 +35,18 @@ class Element {
     this.element = document.createElementNS('http://www.w3.org/2000/svg',name);
   }
 
+  addEl(el, container) {
+    if (container) {
+      container.appendChild(el);
+    }
+  }
+
+  removeEl(el, container) {
+    if (container) {
+      container.removeChild(el);
+    }
+  }
+
   add(el) {
     if (Array.isArray(el)) {
       el.forEach(item => {
@@ -45,17 +57,6 @@ class Element {
     }
     this.childs.push(el);
     this.addEl(el.element, this.element)
-  }
-
-  addEl(el, container) {
-    if (container) {
-      container.appendChild(el);
-    }
-  }
-  removeEl(el, container) {
-    if (container) {
-      container.removeChild(el);
-    }
   }
 
   delete(el) {
