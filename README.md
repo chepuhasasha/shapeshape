@@ -1,10 +1,17 @@
+<a name='home'></a>
 # SHAPE SHAPE!!!
 
-### install.
+- [Start](#start)
+- [Make element](#make_element)
+- [Events](#events)
+
+
+<a name='start'></a>
+### Start
+[menu](#home)
 ```
 npm install shapeshape
 ```
-### start.
 ```html
 <div id='container'></div>
 ```
@@ -25,8 +32,9 @@ result:
   <svg id='my-svg' width='500' height='500'></svg>
 </div>
 ```
-
-### make element.
+<a name='make_element'></a>
+### Make element
+[menu](#home)
 ```js
 const rect = SS.rect({ 
   x: 10,
@@ -39,9 +47,18 @@ svg.add(rect)
 ```
 result:
 ```html
-<div id='container'>
-  <svg id='my-svg' width='500' height='500'>
-    <rect x='10' y='10' width='100' height='50' fill='red'></rect>
-  </svg>
-</div>
+<svg id='my-svg' width='500' height='500'>
+  <rect x='10' y='10' width='100' height='50' fill='red'></rect>
+</svg>
+```
+<a name='events'></a>
+### Events
+[menu](#home)
+```js
+rect.listen('mousedown', function(e) {
+  this.fill = 'blue'  // this = rect context
+})
+
+// or native
+rect.element.addEventListener('mousedown', () => {...})
 ```
