@@ -1,114 +1,68 @@
-class SVG {
-  constructor(el, props = {}) {
-    this._svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-    this._parent = el
-    this._parent.appendChild(this._svg);
-    Object.keys(props).forEach(key => {
-      this._svg.setAttributeNS(null, key, props[key]);
-    })
-  }
-
-  update() {
-    Object.keys(this).forEach(key => {
-      if (!key.includes('_')) {
-        this._svg.setAttributeNS(null, key, this[key]);
-      }
-    })
-  }
-
-  add(el) {
-    if(Array.isArray(el)) {
-      el.forEach(item => {
-        this._svg.appendChild(item._element);
-      })
-    } else {
-      this._svg.appendChild(el._element);
+function PROXY(target) {
+  return new Proxy(target, {
+    get(target, prop) {
+      return target[prop];
+    },
+    set(target, prop, val) {
+      target[prop] = val;
+      return target[prop];
     }
-  }
+  })
 }
 
 class Element {
-  constructor(name, props = {}) {
-    this._element = document.createElementNS('http://www.w3.org/2000/svg', name);
-    Object.keys(props).forEach(key => {
-      this[key] = props[key]
-      this._element.setAttributeNS(null, key, props[key]);
-    })
+  constructor(name = 'svg', attrs = {}, container) {
+    this.element = null;
+    this.attrs = attrs;
+    this.modes = {};
+    this.childs = [];
+    this.createElement(name);
+    this.update(this.attrs);
+    this.add(this.element, container);
   }
 
-  update() {
-    Object.keys(this).forEach(key => {
-      if (!key.includes('_')) {
-        this._element.setAttributeNS(null, key, this[key]);
-      }
-    })
+  createElement(name) {
+    this.element = document.createElementNS('http://www.w3.org/2000/svg',name);
   }
 
-  rotate(val) {
-    this._element.setAttributeNS(null, 'transform', `rotate(${val})`);
-  }
-
-  move(x, y) {
-    this._element.setAttributeNS(null, 'transform', `translate(${x},${y})`);
-  }
-}
-
-class Path {
-  constructor(pointsArr=[],props = {}) {
-    this._element = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    Object.keys(props).forEach(key => {
-      this[key] = props[key]
-      this._element.setAttributeNS(null, key, props[key]);
-    })
-    this.points(pointsArr)
-  }
-
-  points(arr) {
-    const d = 'M10 10 H 90 V 90 H 10'
-    this._element.setAttributeNS(null, 'd', d);
-  }
-
-  update() {
-    Object.keys(this).forEach(key => {
-      if (!key.includes('_')) {
-        this._element.setAttributeNS(null, key, this[key]);
-      }
-    })
-  }
-}
-
-const proxying = function(target) {
-  return new Proxy(target, {
-    get: function(item, property){
-      target.update();
-      return item[property];
-    },
-    set: function(item, property, val){
-      item[property] = val
-      target.update();
-      return item[property];
+  addChild(el) {
+    if (Array.isArray(el)) {
+      el.forEach(item => {
+        this.childs.push(item);
+        this.add(item.element, this.element)
+      })
+      return
     }
-  });
+    this.childs.push(el);
+    this.add(el.element, this.element)
+  }
+
+  add(el, container) {
+    if (container) {
+      container.appendChild(el);
+    }
+  }
+
+  update(attrs) {
+    Object.keys(attrs).forEach(key => {
+      this.element.setAttributeNS(null, key, attrs[key]);
+    })
+  }
+
+  setMode(name) {
+    this.update(this.modes[name]);
+  }
+
+  listen(name, f){
+    this.element.addEventListener(name, f.bind(this));
+  }
 }
 
 export default {
-  SVG(el, props = {}) {
-    const svg = new SVG(el, props)
-    return proxying(svg)
+  SVG(attrs = {}, container) {
+    return PROXY(new Element('svg', attrs, container));
   },
-
-  circle(props = {}) {
-    const circle = new Element('circle', props)
-    return proxying(circle)
-  },
-
-  rect(props = {}) {
-    const rect = new Element('rect', props)
-    return proxying(rect)
-  },
-
-  path(points=[],props = {}) {
-    const path = new Path(points, props)
-    return proxying(path)
+  rect(attrs = {}) {
+    return PROXY(new Element('rect', attrs));
   }
 }
