@@ -1,5 +1,6 @@
 <a name='home'></a>
-# SHAPE SHAPE!!!
+<img src='https://github.com/sashachepuha/shapeshape/blob/main/logo.svg' style='width: 200px;'>
+# SHAPE SHAPE
 
 - [Start](#start)
 - [Make element](#make_element)
