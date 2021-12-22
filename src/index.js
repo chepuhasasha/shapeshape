@@ -1,12 +1,14 @@
 function PROXY(target) {
   const exceptions = [
-    'childs',
-    'modes',
-    'element'
+    ...Object.getOwnPropertyNames(Object.getPrototypeOf(target)),
+    ...Object.getOwnPropertyNames(target),
   ]
   return new Proxy(target, {
     get(target, prop) {
-      return target[prop];
+      if(exceptions.includes(prop)) {
+        return target[prop];
+      }
+      return target.attrs[prop];
     },
     set(target, prop, val) {
       if(exceptions.includes(prop)) {
@@ -15,7 +17,7 @@ function PROXY(target) {
       }
       target.attrs[prop] = val;
       target.update(target.attrs)
-      return target.attrs[prop];
+      return true;
     }
   })
 }
