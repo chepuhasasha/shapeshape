@@ -5,6 +5,7 @@
 - [Make element](#make_element)
 - [Events](#events)
 
+<hr>
 
 <a name='start'></a>
 ### Start
@@ -32,6 +33,8 @@ result:
   <svg id='my-svg' width='500' height='500'></svg>
 </div>
 ```
+<hr>
+
 <a name='make_element'></a>
 ### Make element
 [menu](#home)
@@ -51,6 +54,8 @@ result:
   <rect x='10' y='10' width='100' height='50' fill='red'></rect>
 </svg>
 ```
+<hr>
+
 <a name='events'></a>
 ### Events
 [menu](#home)
