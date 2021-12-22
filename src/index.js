@@ -1,9 +1,18 @@
 function PROXY(target) {
+  const exceptions = [
+    'childs',
+    'modes',
+    'element'
+  ]
   return new Proxy(target, {
     get(target, prop) {
       return target[prop];
     },
     set(target, prop, val) {
+      if(exceptions.includes(prop)) {
+        target[prop] = val;
+        return target[prop];
+      }
       target.attrs[prop] = val;
       target.update(target.attrs)
       return target.attrs[prop];
@@ -42,6 +51,17 @@ class Element {
     if (container) {
       container.appendChild(el);
     }
+  }
+  removeEl(el, container) {
+    if (container) {
+      container.removeChild(el);
+    }
+  }
+
+  delete(el) {
+    const result = this.childs.filter(child => child != el)
+    this.childs = result
+    this.removeEl(el.element, this.element)
   }
 
   update(attrs) {

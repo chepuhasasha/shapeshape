@@ -24,9 +24,17 @@ const c = SS.circle({
   fill: 'blue'
 })
 
+const c2 = SS.circle({
+  cx: 100,
+  cy: 100,
+  r: 50,
+  fill: 'green'
+})
+
 r.fill = 'blue'
 c.fill = 'red'
 
-svg.add([r, c])
+svg.add([r, c, c2])
+svg.delete(c2)
 
 console.log(svg)
