@@ -13,9 +13,11 @@ c.fill = 'red'
 
 const toggle = function() {
   this.selected = !this.selected
+  this.fill = 'blue'
 }
 const move = function(e) {
   if(this.selected) {
+    this.fill = 'red'
     this.x = e.pageX - this.width / 2
     this.y = e.pageY - this.height / 2
   }
