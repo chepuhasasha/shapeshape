@@ -1,5 +1,5 @@
 <a name='home'></a>
-<img src='https://github.com/sashachepuha/shapeshape/blob/main/logo.svg' style='width: 200px;'>
+<img src='../assets/logo.svg' style='width: 200px;'>
 # SHAPE SHAPE
 
 - [Start](#start)
