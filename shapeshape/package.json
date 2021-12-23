@@ -2,7 +2,7 @@
   "name": "shapeshape",
   "author": "Sergey Batukov",
   "license": "MIT",
-  "version": "1.1.0",
+  "version": "0.0.1",
   "description": "svg cli",
   "homepage": "https://github.com/sashachepuha/shapeshape/tree/main/shapeshape",
   "main": "dist/index.js",
