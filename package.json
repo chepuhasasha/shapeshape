@@ -10,9 +10,9 @@
   "scripts": {
     "build": "webpack --env production --progress",
     "dev": "webpack serve --open",
-    "release": "npm --workspace=shapeshape version patch",
+    "release": "npm --workspace=shapeshape version major",
     "update": "npm --workspace=shapeshape version minor",
-    "fix": "npm --workspace=shapeshape version major",
+    "fix": "npm --workspace=shapeshape version patch",
     "deploy": "npm publish ./shapeshape --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
