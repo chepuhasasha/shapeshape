@@ -7,7 +7,8 @@
   "scripts": {
     "build": "webpack --env production --progress",
     "dev": "webpack serve --open",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,7 @@
     "svg"
   ],
   "author": "Sergey Batukov",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sashachepuha/shapeshape/issues"
   },
@@ -27,8 +28,5 @@
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21"
   }
 }

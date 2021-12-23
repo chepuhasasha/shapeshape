@@ -23,7 +23,7 @@ module.exports = (env) => {
 
   const PROD = {
     mode: 'production',
-    entry: './src/index.js',
+    entry: './src/library/index.js',
     output: {
       path: path.resolve(__dirname, 'lib'),
       filename: 'index.js',

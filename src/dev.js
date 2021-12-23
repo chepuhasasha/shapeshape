@@ -1,4 +1,4 @@
-import SS from './index';
+import SS from './library';
 
 const container = document.createElement('div');
 document.body.appendChild(container);
