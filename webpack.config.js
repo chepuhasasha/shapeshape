@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = (env) => {
   const DEV = {
     mode: 'development',
-    entry: './src/dev.js',
+    entry: './example/index.js',
     devtool: 'inline-source-map',
     devServer: {
       allowedHosts: 'all'
@@ -23,12 +23,12 @@ module.exports = (env) => {
 
   const PROD = {
     mode: 'production',
-    entry: './src/library/index.js',
+    entry: './shapeshape/index.js',
     output: {
-      path: path.resolve(__dirname, 'lib'),
+      path: path.resolve(__dirname + '/shapeshape', 'dist'),
       filename: 'index.js',
       library: {
-        name: 'ShapeShape',
+        name: 'shapeshape',
         type: 'umd',
       },
       clean: true,

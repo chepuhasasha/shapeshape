@@ -1,28 +1,18 @@
 {
   "name": "shapeshape",
-  "version": "1.1.0",
-  "description": "svg cli",
-  "main": "lib/index.js",
-  "private": false,
+  "version": "1.0.0",
+  "author": "Sergey Batukov",
+  "license": "MIT",
+  "description": "shapeshape monorepo",
+  "workspaces": [
+    "./shapeshape"
+  ],
   "scripts": {
     "build": "webpack --env production --progress",
     "dev": "webpack serve --open",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "npm publish --access public"
+    "publish": "npm publish ./shapeshape --access public",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sashachepuha/shapeshape.git"
-  },
-  "keywords": [
-    "svg"
-  ],
-  "author": "Sergey Batukov",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sashachepuha/shapeshape/issues"
-  },
-  "homepage": "https://github.com/sashachepuha/shapeshape",
   "devDependencies": {
     "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.65.0",

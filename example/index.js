@@ -1,4 +1,4 @@
-import SS from './library';
+import SS from '../shapeshape';
 
 const container = document.createElement('div');
 document.body.appendChild(container);
