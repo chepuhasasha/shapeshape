@@ -2,4 +2,3 @@ src
 .github
 .editorconfig
 webpack.config.js
-package.json
