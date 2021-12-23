@@ -1,5 +1,5 @@
 {
-  "name": "shapeshape",
+  "name": "shapeshape_repo",
   "version": "1.0.0",
   "author": "Sergey Batukov",
   "license": "MIT",
@@ -10,9 +10,9 @@
   "scripts": {
     "build": "webpack --env production --progress",
     "dev": "webpack serve --open",
-    "release": "npm -w ./shapeshape version patch",
-    "update": "npm -w ./shapeshape version minor",
-    "fix": "npm -w ./shapeshape version major",
+    "release": "npm --workspace=shapeshape version patch",
+    "update": "npm --workspace=shapeshape version minor",
+    "fix": "npm --workspace=shapeshape version major",
     "deploy": "npm publish ./shapeshape --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
